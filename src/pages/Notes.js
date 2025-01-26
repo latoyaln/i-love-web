@@ -27,7 +27,7 @@ const NotesPage = () => {
           const hasCards = item.fields.components && item.fields.components.some(component => component.sys.contentType.sys.id === 'card');
           
           return (
-            <div key={item.sys.id} className="note-item">
+            <article key={item.sys.id} className="note-item">
               {hasCards ? (
                 <div className="card-section">
                   {item.fields.components.map((component) => {
@@ -47,7 +47,7 @@ const NotesPage = () => {
               ) : (
                 <p>No notes found.</p>  
               )}
-            </div>
+            </article>
           );
         })
       ) : null}
