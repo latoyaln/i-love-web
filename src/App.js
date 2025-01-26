@@ -1,6 +1,7 @@
 // App.js
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import client from './contentfulClient'; 
 
 const App = () => {
   return (
