@@ -1,3 +1,4 @@
+// src/ContentfulContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import client from './contentfulClient';
 
@@ -29,17 +30,19 @@ export const ContentfulProvider = ({ children }) => {
       if (!page) {
         throw new Error('Page not found');
       }
+
       const pageData = {
         page: page,
         content: {},
       };
 
-      const references = page.fields.references || [];
-      for (const reference of references) {
-        const contentType = reference.sys.contentType.sys.id; 
-        if (!pageData.content[contentType]) {
-          const contentData = await fetchContentType(contentType);
-          pageData.content[contentType] = contentData;
+      const components = page.fields.components || [];
+
+      for (const reference of components) {
+        const contentType = reference.sys.contentType.sys.id;
+        if (contentType === 'itemCollection') {
+          const itemCollectionData = await fetchContentType('itemCollection');
+          pageData.content.itemCollection = itemCollectionData;
         }
       }
 
@@ -56,7 +59,7 @@ export const ContentfulProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchPageData('home'); 
+    fetchPageData('notes'); 
   }, []);
 
   return (

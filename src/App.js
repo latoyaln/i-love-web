@@ -1,16 +1,18 @@
-// App.js
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import client from './contentfulClient'; 
+// src/App.js
+import React from 'react';
+import { ContentfulProvider } from './ContentfulContext'; // Import the Contentful context provider
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes from react-router-dom
+import NotesPage from './pages/Notes'; // Import the Notes Page Component
 
 const App = () => {
   return (
-    <div className="app">
-      <h1 className="title">Latoya's Digital Garden</h1>
-      <div className="buttons">
-
-      </div>
-    </div>
+    <ContentfulProvider>
+      <Router>
+        <Routes>
+          <Route path="/notes" element={<NotesPage />} /> {/* Notes page route */}
+        </Routes>
+      </Router>
+    </ContentfulProvider>
   );
 };
 
