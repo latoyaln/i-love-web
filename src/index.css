@@ -1,14 +1,25 @@
-/* Basic reset for body */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-:root{
+
+:root {
+  /* Fonts */
   --head-font: "Erica One", serif;
+  --body-font: "Plus Jakarta Sans", serif;
   --head-weight: 400;
   --head-style: normal;
+  --border-radius: 62px;
+
+  /* Colors */
+  --leave-green: #70865E;
+  --black: #000000;
+  --white: #FFFFFF;
+  --beige: #EDE1B5;
+  --forest-green: #394823;
 }
+
 body, html {
   height: 100%;
   background-color: #f1f1f1;
@@ -16,17 +27,117 @@ body, html {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: var(--body-font);
 }
 
-.app {
+h1, h2 {
+  font-family: var(--head-font);
+  font-weight: var(--head-weight);
+  color: var(--forest-green);
   text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.notes-container {
+  width: 100%;
+  max-width: 1200px;
   padding: 20px;
 }
 
-.title {
-  font-size: 2.5rem;
-  font-family: var(--head-font);
-  font-weight: var(--head-weight);
-  color: #2f4f4f;
-  margin-bottom: 40px;
+.note-item {
+  margin-bottom: 30px;
+}
+.note-item h2{
+  color: var(--white);
+}
+
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.note-card {
+  background-color: var(--forest-green);
+  color: var(--white);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  width: calc(33% - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-card h2 {
+  margin-bottom: 10px;
+}
+
+/* Link button style */
+.view-more-btn {
+  background-color: var(--white);
+  color: var(--leave-green);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.view-more-btn:hover {
+  background-color: var(--leave-green);
+  color: var(--white);
+}
+
+.view-more-btn:focus {
+  outline: 3px solid var(--leave-green);
+}
+
+/* Loading State Animation */
+.loading-state {
+  font-size: 1.5rem;
+  color: var(--forest-green);
+  text-align: center;
+  animation: fadeIn 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Mobile First Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .note-card {
+    width: 100%;
+  }
+
+  .card-section {
+    flex-direction: column;
+  }
+}
+
+/* Larger Screens */
+@media (min-width: 769px) {
+  .note-card {
+    width: calc(33% - 20px);
+  }
 }
