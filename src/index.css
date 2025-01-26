@@ -1,0 +1,32 @@
+/* Basic reset for body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  --head-font: "Erica One", serif;
+  --head-weight: 400;
+  --head-style: normal;
+}
+body, html {
+  height: 100%;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-family: var(--head-font);
+  font-weight: var(--head-weight);
+  color: #2f4f4f;
+  margin-bottom: 40px;
+}
